@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond } from 'next/font/google';
 import './globals.css'; // Global styles
 
@@ -9,8 +9,21 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Sam's Lil Flower",
+  title: "Sams and Mat",
   description: "An interactive, elegant, procedurally blooming flower visualizer set in a star-twinkling dark night garden.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: "Lírio Mágico",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#0b0312',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
