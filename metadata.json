@@ -1,0 +1,6 @@
+{
+  "name": "Sam's Lil Flower",
+  "description": "An interactive, elegant, procedurally blooming flower visualizer set in a star-twinkling dark night garden.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

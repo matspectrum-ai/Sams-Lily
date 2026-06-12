@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+/* Base reset to match layout perfectly */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom interactive flower components */
+.flower {
+  cursor: pointer;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  transition: box-shadow 3s;
+  animation: 6s ease-in-out infinite alternate gentleFloat;
+  display: flex;
+  position: relative;
+  box-shadow: 0 0 #ffb6c100;
+}
+
+.flower:hover {
+  box-shadow: 0 0 100px 20px rgba(255, 107, 139, 0.15);
+}
+
+@keyframes gentleFloat {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-10px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+}
+
+.petal {
+  transform-origin: bottom;
+  opacity: 0;
+  width: 50px;
+  height: 140px;
+  transform: rotate(var(--angle)) scale(1);
+  background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 141, 161, 0.9) 60%, rgba(212, 255, 141, 0.8));
+  border-radius: 50% / 80% 80% 20% 20%;
+  transition: background 3s, box-shadow 3s, transform 0.5s;
+  animation: 4.5s forwards bloom;
+  position: absolute;
+  bottom: 50%;
+  box-shadow: 0 0 20px rgba(255, 141, 161, 0.15);
+}
+
+.petal1 {
+  --angle: 0deg;
+  animation-delay: 0.5s;
+}
+
+.petal4 {
+  --angle: 180deg;
+  animation-delay: 0.5s;
+}
+
+.petal2 {
+  --angle: 60deg;
+  animation-delay: 1.8s;
+}
+
+.petal5 {
+  --angle: 240deg;
+  animation-delay: 1.8s;
+}
+
+.petal3 {
+  --angle: 120deg;
+  animation-delay: 3s;
+}
+
+.petal6 {
+  --angle: 300deg;
+  animation-delay: 3s;
+}
+
+@keyframes bloom {
+  0% {
+    transform: rotate(var(--angle)) scale(0) translateY(20px) rotateX(-30deg);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--angle)) scale(1) translateY(0) rotateX(0);
+    opacity: 1;
+  }
+}
+
+.stamen {
+  transform-origin: bottom;
+  z-index: 5;
+  opacity: 0;
+  width: 3px;
+  height: 75px;
+  transform: rotate(var(--angle)) scaleY(1);
+  background-color: #b5d596;
+  border-radius: 2px;
+  animation: 3.5s forwards stamenBloom;
+  position: absolute;
+  bottom: 50%;
+}
+
+.stamen:after {
+  content: "";
+  opacity: 0;
+  background-color: #ffa500;
+  border-radius: 50px;
+  width: 11px;
+  height: 22px;
+  animation: 3s ease-in-out forwards antherBloom;
+  position: absolute;
+  top: -8px;
+  left: -4px;
+  transform: rotate(15deg);
+  box-shadow: 0 0 8px rgba(255, 170, 0, 0.6);
+}
+
+.stamen1 {
+  --angle: 30deg;
+  animation-delay: 4.5s;
+}
+
+.stamen1:after {
+  animation-delay: 5.5s;
+}
+
+.stamen2 {
+  --angle: 90deg;
+  animation-delay: 4.7s;
+}
+
+.stamen2:after {
+  animation-delay: 5.7s;
+}
+
+.stamen3 {
+  --angle: 150deg;
+  animation-delay: 4.9s;
+}
+
+.stamen3:after {
+  animation-delay: 5.9s;
+}
+
+.stamen4 {
+  --angle: 210deg;
+  animation-delay: 5.1s;
+}
+
+.stamen4:after {
+  animation-delay: 6.1s;
+}
+
+.stamen5 {
+  --angle: 270deg;
+  animation-delay: 5.3s;
+}
+
+.stamen5:after {
+  animation-delay: 6.3s;
+}
+
+.stamen6 {
+  --angle: 330deg;
+  animation-delay: 5.5s;
+}
+
+.stamen6:after {
+  animation-delay: 6.5s;
+}
+
+@keyframes stamenBloom {
+  0% {
+    transform: rotate(var(--angle)) scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(var(--angle)) scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes antherBloom {
+  0% {
+    opacity: 0;
+    transform: rotate(15deg) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(15deg) scale(1);
+  }
+}
+
+.center {
+  z-index: 10;
+  opacity: 0;
+  background-color: #fffacd;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: 4s ease-in-out 2s forwards centerBloom;
+  position: absolute;
+  box-shadow: 0 0 20px 5px rgba(255, 250, 205, 0.8);
+}
+
+@keyframes centerBloom {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.flower:hover .petal {
+  background: linear-gradient(#fff, rgba(255, 107, 139, 0.95) 60%, rgba(212, 255, 141, 0.9));
+  box-shadow: 0 0 40px rgba(255, 107, 139, 0.8);
+}
